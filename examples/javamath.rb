@@ -36,13 +36,6 @@ class FastMath
       }
       "
   end
-
-  def bench
-    require 'benchmark'
-
-    Benchmark.bm(30) do |bm|
-    end
-  end
 end
 
 math = FastMath.new

@@ -1,1 +1,15 @@
 java-inline is a plugin for RubyInline that adds JVM language support. See the examples dir for a simple example of using it.
+
+java-inline adds support for Java
+
+scala-inline adds support for Scala.
+
+Running example
+-------------------
+
+gem install RubyInline
+
+and to run the example
+cd examples
+jruby fastmath.rb
+jruby -J-Dscala.home=<your scala home> scalamath.rb
