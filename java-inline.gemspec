@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform = "java"
   s.name = "java-inline"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.date = "2009-11-23"
   s.summary = "JVM language support for RubyInline"
   s.description = %q{A set of plugins for RubyInline to allow embedding JVM languages into Ruby code running on JRuby}
