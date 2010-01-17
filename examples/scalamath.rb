@@ -39,7 +39,7 @@ math = FastMath.new
 Benchmark.bmbm(30) {|bm|
   5.times { bm.report("factorial_ruby") { 30000.times { math.factorial_ruby(30) } } }
   5.times { bm.report("factorial_scala") { 30000.times { math.factorial_scala(30) } } }
-  5.times { bm.report("fib_ruby(35)") { math.fib_ruby(30) } }
-  5.times { bm.report("fib_scala(35)") { math.fib_scala(30) } }
+  5.times { bm.report("fib_ruby(35)") { math.fib_ruby(35) } }
+  5.times { bm.report("fib_scala(35)") { math.fib_scala(35) } }
 }
 
