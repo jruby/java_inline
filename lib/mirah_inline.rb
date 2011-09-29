@@ -1,17 +1,17 @@
 require 'rubygems'
 require 'inline'
 require 'java'
-require 'duby'
+require 'mirah'
 
 # Add the inline cache dir to CLASSPATH
 $CLASSPATH << Inline.directory
 
 module Inline
   
-  # A Duby builder for RubyInline. Provides the basic methods needed to
-  # allow assembling a set of Duby methods that compile into a class and
+  # A Mirah builder for RubyInline. Provides the basic methods needed to
+  # allow assembling a set of Mirah methods that compile into a class and
   # get bound to the same names in the containing module.
-  class Duby
+  class Mirah
     def initialize(mod)
       @context = mod
       @src = ""
@@ -44,8 +44,8 @@ module Inline
     end
 
     def build
-      @load_name = @name = "Duby#{@src.hash.abs}"
-      filename = "#{@name}.duby"
+      @load_name = @name = "Mirah#{@src.hash.abs}"
+      filename = "#{@name}.mirah"
 
       imports = "import " + @imports.join("\nimport ") if @imports.size > 0
       full_src = "
@@ -57,7 +57,7 @@ module Inline
 
       File.open(filename, "w") {|file| file.write(full_src)}
       Dir.chdir(Inline.directory) do
-        ::Duby.compile(filename)
+        ::Mirah.compile(filename)
       end
     end
 

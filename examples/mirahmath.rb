@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'inline'
-require 'duby_inline'
+require 'mirah_inline'
 require 'benchmark'
 
 class FastMath
@@ -18,9 +18,9 @@ class FastMath
     end
   end
   
-  inline :Duby do |builder|
-    builder.duby "
-      def factorial_duby(max:int)
+  inline :Mirah do |builder|
+    builder.mirah "
+      def factorial_mirah(max:int)
         i = max
         result = 1
         while i >= 2; result *= i-=1; end
@@ -28,12 +28,12 @@ class FastMath
       end
       "
 
-    builder.duby "
-      def fib_duby(n:int)
+    builder.mirah "
+      def fib_mirah(n:int)
         if n < 2
           n
         else
-          fib_duby(n - 2) + fib_duby(n - 1)
+          fib_mirah(n - 2) + fib_mirah(n - 1)
         end
       end
       "
@@ -44,8 +44,8 @@ math = FastMath.new
 
 Benchmark.bmbm(30) {|bm|
   5.times { bm.report("factorial_ruby") { 30000.times { math.factorial_ruby(30) } } }
-  5.times { bm.report("factorial_duby") { 30000.times { math.factorial_duby(30) } } }
+  5.times { bm.report("factorial_mirah") { 30000.times { math.factorial_mirah(30) } } }
   5.times { bm.report("fib_ruby(35)") { math.fib_ruby(35) } }
-  5.times { bm.report("fib_duby(35)") { math.fib_duby(35) } }
+  5.times { bm.report("fib_mirah(35)") { math.fib_mirah(35) } }
 }
 
